@@ -1,0 +1,94 @@
+{
+  "key": "confluence-giphy-addon",
+  "name": "Office 365 Video for Confluence",
+  "description": "Embed Office 365 Video into Confluence pages",
+  "vendor": {
+    "name": "Colin Bowern",
+    "url": "https://www.colinbowern.com/"
+  },
+  "baseUrl": "https://static-confluence-content.services.bowern.net",
+  "links": {
+    "self": "https://static-confluence-content.services.bowern.net/office-365-video-macro/atlassian-connect.json",
+    "homepage": "https://static-confluence-content.services.bowern.net/office-365-video-macro/atlassian-connect.json"
+  },
+  "authentication": {
+    "type": "jwt"
+  },
+  "lifecycle": {
+    "installed": "/installed"
+  },
+  "scopes": [
+    "READ"
+  ],
+  "modules": {
+    "dynamicContentMacros": [
+      {
+        "key": "office-365-video-macro",
+        "name": {
+          "value": "Office 365 Video Macro"
+        },
+        "url": "/render.html?url={url}&width={width}&height={height}",
+        "description": {
+          "value": "Displays a Gif from Giphy"
+        },
+        "outputType": "inline",
+        "bodyType": "none",
+        "featured": true,
+        "parameters": [
+          {
+            "identifier": "url",
+            "name": {
+              "value": "URL"
+            },
+            "description": {
+              "value": "Office 365 Video URL"
+            },
+            "type": "string",
+            "required": true
+          },
+          {
+            "identifier": "width",
+            "name": {
+              "value": "Width"
+            },
+            "type": "string",
+            "required": false
+          },
+          {
+            "identifier": "height",
+            "name": {
+              "value": "Height"
+            },
+            "type": "string",
+            "required": false
+          }
+        ],
+        "autoconvert": {
+          "urlParameter": "url",
+          "matchers": [
+            {
+              "pattern": "https://{}.sharepoint.com/portals/hub/_layouts/15/PointPublishing.aspx?app=video&p=p&{}"
+            }
+          ]
+        },
+        "editor": {
+          "url": "/edit.html",
+          "editTitle": {
+            "value": "Office 365 Video Search"
+          },
+          "insertTitle": {
+            "value": "Office 365 Video Search"
+          },
+          "width": "640px",
+          "height": "370px",
+          "chrome": false
+        },
+        "icon": {
+          "width": 16,
+          "height": 16,
+          "url": "/images/logo.png"
+        }
+      }
+    ]
+  }
+}
